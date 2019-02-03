@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 const MainContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 42px;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  background: rgba(22, 28, 22, 0.8);
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
 `;
 
@@ -21,21 +24,19 @@ const NavBar = styled.nav`
   font-family -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
   `;
 
-  const ClockFramework = styled.div`
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background-color: black;
-    margin: 50px 0 0 0;
-    box-sizing: border-box;
-    border: ${({ border }) => border && '2px solid red'};
-
+  const Clock = styled.div`
+    width: 1fr;
+    height: 42px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
   `;
 
-  const Time = styled.p`
-    font-size: 30px;
-    margin: 40% 15%;
+  const Time = styled.span`
+    font-size: 15px;
     color: white;
+    justify-content: center;
+    align-items: center;
     `;
 
   const Button = styled.button`
@@ -48,7 +49,7 @@ const NavBar = styled.nav`
 
 
   export {
-      ClockFramework, 
+      Clock, 
       MainContainer,
       NavBar,
       Time, 
