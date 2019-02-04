@@ -1,6 +1,7 @@
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 30px;
+    margin: 0 0 0 5px;
   }
   
   @keyframes App-logo-spin {
@@ -12,9 +13,19 @@
     }
   }
 
-  .spacer {
-    width: 1fr;
-    background: red;
+  #taskbar-apps {
+      flex: auto;
+      width: 100%;
+      height: 25px;
   }
+
+  .icon {
+      height: 25px;
+      color: #fff;
+      margin: 0 12px;
+        /* box-sizing: border-box; */
+
+  }
+
   
   

@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 const MainContainer = styled.div`
   width: 100%;
-  height: 42px;
+  height: 52px;
   display: flex;
   background: rgba(22, 28, 22, 0.8);
   border: 1px solid #aaa;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
 `;
@@ -25,19 +25,16 @@ const NavBar = styled.nav`
   `;
 
   const Clock = styled.div`
-    width: 1fr;
-    height: 42px;
+    width: 6rem;
     color: #fff;
-    justify-content: center;
-    align-items: center;
-  `;
+    margin: 0 1rem 0 0;
+   `;
 
-  const Time = styled.span`
+  const Time = styled.p`
     font-size: 15px;
     color: white;
-    justify-content: center;
-    align-items: center;
-    `;
+
+  `;
 
   const Button = styled.button`
     margin-top: 10px;
