@@ -1,9 +1,9 @@
 {
-  "main.css": "/does-react/static/css/main.d0e71888.chunk.css",
-  "main.js": "/does-react/static/js/main.e339377d.chunk.js",
-  "main.js.map": "/does-react/static/js/main.e339377d.chunk.js.map",
-  "static/js/1.b0971dc6.chunk.js": "/does-react/static/js/1.b0971dc6.chunk.js",
-  "static/js/1.b0971dc6.chunk.js.map": "/does-react/static/js/1.b0971dc6.chunk.js.map",
+  "main.css": "/does-react/static/css/main.053a3d73.chunk.css",
+  "main.js": "/does-react/static/js/main.1ced1867.chunk.js",
+  "main.js.map": "/does-react/static/js/main.1ced1867.chunk.js.map",
+  "static/js/1.888703a4.chunk.js": "/does-react/static/js/1.888703a4.chunk.js",
+  "static/js/1.888703a4.chunk.js.map": "/does-react/static/js/1.888703a4.chunk.js.map",
   "runtime~main.js": "/does-react/static/js/runtime~main.b5e22bac.js",
   "runtime~main.js.map": "/does-react/static/js/runtime~main.b5e22bac.js.map",
   "static/media/logo.svg": "/does-react/static/media/logo.5d5d9eef.svg",
@@ -12,9 +12,10 @@
   "static/media/chrome.svg": "/does-react/static/media/chrome.f3b6c54c.svg",
   "static/media/vscode.svg": "/does-react/static/media/vscode.6e1a6f9e.svg",
   "static/media/outlook.svg": "/does-react/static/media/outlook.8ea4700d.svg",
+  "static/media/explorer.png": "/does-react/static/media/explorer.45c49d7f.png",
   "static/media/task.svg": "/does-react/static/media/task.369aa1bb.svg",
-  "static/css/main.d0e71888.chunk.css.map": "/does-react/static/css/main.d0e71888.chunk.css.map",
+  "static/css/main.053a3d73.chunk.css.map": "/does-react/static/css/main.053a3d73.chunk.css.map",
   "index.html": "/does-react/index.html",
-  "precache-manifest.a75c837ea342638274d068bc98d9c489.js": "/does-react/precache-manifest.a75c837ea342638274d068bc98d9c489.js",
+  "precache-manifest.e77978260b049ddcd4af165c69927793.js": "/does-react/precache-manifest.e77978260b049ddcd4af165c69927793.js",
   "service-worker.js": "/does-react/service-worker.js"
 }
