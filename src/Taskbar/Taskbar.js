@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MainContainer, Clock, Time } from './Taskbar.styles';
+
 import logo from './logo.svg';
 import task from './task.svg';
 import explorer from './explorer.svg';
@@ -22,9 +23,10 @@ const App = () => {
 
   }, []);
 
+
   return (
     <MainContainer>
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} id="start" className="App-logo" alt="logo" />
       <div id="taskbar-apps">
         <img src={task} className="icon" alt="logo" />
         <img src={explorer} className="icon" alt="logo" />

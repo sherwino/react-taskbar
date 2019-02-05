@@ -19,6 +19,21 @@
   color: #61dafb;
 }
 
+.window {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 34px;
+  left: 209px;
+  overflow: hidden;
+  background: #878787;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  color: white;
+}
+
 #Smallchat > .Layout {
 
   /* display: none; */
