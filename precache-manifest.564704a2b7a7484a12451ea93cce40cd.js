@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7f2925347597aded903f",
+    "revision": "17b6ddc0aa6e3f20985f",
     "url": "/react-taskbar/static/css/main.611c20be.chunk.css"
   },
   {
-    "revision": "7f2925347597aded903f",
-    "url": "/react-taskbar/static/js/main.7f292534.chunk.js"
+    "revision": "17b6ddc0aa6e3f20985f",
+    "url": "/react-taskbar/static/js/main.17b6ddc0.chunk.js"
   },
   {
     "revision": "6e936d7a0d95bff2d23a",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/react-taskbar/static/media/explorer.45c49d7f.png"
   },
   {
-    "revision": "0a593d57d16968bbaad370c2c67fd468",
+    "revision": "f865fb8d7081c68b8b41544eaa461955",
     "url": "/react-taskbar/index.html"
   }
 ];

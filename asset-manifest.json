@@ -1,7 +1,7 @@
 {
   "main.css": "/react-taskbar/static/css/main.611c20be.chunk.css",
-  "main.js": "/react-taskbar/static/js/main.7f292534.chunk.js",
-  "main.js.map": "/react-taskbar/static/js/main.7f292534.chunk.js.map",
+  "main.js": "/react-taskbar/static/js/main.17b6ddc0.chunk.js",
+  "main.js.map": "/react-taskbar/static/js/main.17b6ddc0.chunk.js.map",
   "static/js/1.6e936d7a.chunk.js": "/react-taskbar/static/js/1.6e936d7a.chunk.js",
   "static/js/1.6e936d7a.chunk.js.map": "/react-taskbar/static/js/1.6e936d7a.chunk.js.map",
   "runtime~main.js": "/react-taskbar/static/js/runtime~main.8632bdc9.js",
@@ -16,6 +16,6 @@
   "static/media/explorer.png": "/react-taskbar/static/media/explorer.45c49d7f.png",
   "static/css/main.611c20be.chunk.css.map": "/react-taskbar/static/css/main.611c20be.chunk.css.map",
   "index.html": "/react-taskbar/index.html",
-  "precache-manifest.ed752fb921626d9886b2d36c80b231a8.js": "/react-taskbar/precache-manifest.ed752fb921626d9886b2d36c80b231a8.js",
+  "precache-manifest.564704a2b7a7484a12451ea93cce40cd.js": "/react-taskbar/precache-manifest.564704a2b7a7484a12451ea93cce40cd.js",
   "service-worker.js": "/react-taskbar/service-worker.js"
 }
