@@ -1,9 +1,9 @@
 {
-  "main.css": "/react-taskbar/static/css/main.611c20be.chunk.css",
-  "main.js": "/react-taskbar/static/js/main.17b6ddc0.chunk.js",
-  "main.js.map": "/react-taskbar/static/js/main.17b6ddc0.chunk.js.map",
-  "static/js/1.6e936d7a.chunk.js": "/react-taskbar/static/js/1.6e936d7a.chunk.js",
-  "static/js/1.6e936d7a.chunk.js.map": "/react-taskbar/static/js/1.6e936d7a.chunk.js.map",
+  "main.css": "/react-taskbar/static/css/main.618d850b.chunk.css",
+  "main.js": "/react-taskbar/static/js/main.f5f996f9.chunk.js",
+  "main.js.map": "/react-taskbar/static/js/main.f5f996f9.chunk.js.map",
+  "static/js/1.e90c725c.chunk.js": "/react-taskbar/static/js/1.e90c725c.chunk.js",
+  "static/js/1.e90c725c.chunk.js.map": "/react-taskbar/static/js/1.e90c725c.chunk.js.map",
   "runtime~main.js": "/react-taskbar/static/js/runtime~main.8632bdc9.js",
   "runtime~main.js.map": "/react-taskbar/static/js/runtime~main.8632bdc9.js.map",
   "static/media/logo.svg": "/react-taskbar/static/media/logo.5d5d9eef.svg",
@@ -14,8 +14,8 @@
   "static/media/vscode.svg": "/react-taskbar/static/media/vscode.6e1a6f9e.svg",
   "static/media/outlook.svg": "/react-taskbar/static/media/outlook.8ea4700d.svg",
   "static/media/explorer.png": "/react-taskbar/static/media/explorer.45c49d7f.png",
-  "static/css/main.611c20be.chunk.css.map": "/react-taskbar/static/css/main.611c20be.chunk.css.map",
+  "static/css/main.618d850b.chunk.css.map": "/react-taskbar/static/css/main.618d850b.chunk.css.map",
   "index.html": "/react-taskbar/index.html",
-  "precache-manifest.564704a2b7a7484a12451ea93cce40cd.js": "/react-taskbar/precache-manifest.564704a2b7a7484a12451ea93cce40cd.js",
+  "precache-manifest.63c9ab9c480a456b30f3b25d55a67b23.js": "/react-taskbar/precache-manifest.63c9ab9c480a456b30f3b25d55a67b23.js",
   "service-worker.js": "/react-taskbar/service-worker.js"
 }
