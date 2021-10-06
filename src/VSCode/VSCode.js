@@ -48,7 +48,7 @@ class VSCode extends React.Component {
     >
     <div style={style}>Visual Studio Code</div>
     {/* https://winodoescors.sherwino.repl.co/ */}
-    <Iframe url="https://github.dev/sherwino/react-taskbar"
+    <Iframe url="https://vscode-web-test-playground.azurewebsites.net/"
       width={width}
       height={height}
       position={position}
