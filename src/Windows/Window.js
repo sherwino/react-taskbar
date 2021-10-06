@@ -20,7 +20,6 @@ const styles = {
     height: 25,
     width: 30,
     cursor: "default",
-    backgroundColor: "red"
   },
   window: {
     display: "flex",
