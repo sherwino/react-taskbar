@@ -10,7 +10,8 @@ The React Taskbar is a launcher that pulls in a series of apps and tools from ot
 
 The initial implementation shows how you could create resizable and dragable windows. The app was created using create react app and more on those scripts can be seen [here](./docs/cra.md)
 
-// Insert screen cap here
+https://user-images.githubusercontent.com/2348227/140614400-09f3049c-3f48-45f6-9ebd-8542058481d2.mov
+
 
 In future iterations the launcher will be able to add repos using a faux app store, where you can browse apps and install them, even add your own custom ones where you "add a repo" to the store, pick an icon, and a name for it.
 
