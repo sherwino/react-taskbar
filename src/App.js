@@ -5,6 +5,7 @@ import './App.css';
 import VSCode from './VSCode/VSCode';
 import './messenger.css';
 import './T8EASER7VGFWA1B124'
+import Todo from "./Todo/Todo";
 
 class App extends Component {
   render() {
@@ -16,7 +17,8 @@ class App extends Component {
           </h1>
         </header>
         <Window/>
-        <VSCode/>
+        {/* <VSCode/> */}
+        <Todo/>
         <Taskbar/>
       </div>
     );
