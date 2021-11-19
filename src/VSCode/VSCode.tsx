@@ -74,10 +74,10 @@ class VSCode extends React.Component {
             title="code"
             width={width}
             height={height}
-            position={position}
+            // position={position}
             id="vscode-iframe"
             className="iframe"
-            display="initial"
+            // display="initial"
             allowFullScreen
           />
         </Rnd>
