@@ -1,3 +1,4 @@
+
 window.Smallchat = {
   config: {
     slackTeamId: "T8EASER7V",

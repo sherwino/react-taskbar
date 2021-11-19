@@ -33,7 +33,7 @@ const styles = {
   },
 };
 
-class Window extends React.Component {
+class Window extends React.Component<WindowProps, WindowState> {
   constructor() {
     super();
     this.state = {
