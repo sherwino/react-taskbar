@@ -38,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/node": "^16.11.7"
+    "@types/node": "^16.11.7",
+    "@types/styled-components": "^5.1.15"
   }
 }
