@@ -1,6 +1,6 @@
 import React from "react";
 import { Rnd } from "react-rnd";
-import storage from "./utils";
+import storage from "../utils";
 import { Checkbox, Input } from "antd";
 import "antd/dist/antd.css";
 
@@ -60,12 +60,6 @@ function handleInputChange(event, type = null, enterValue) {
   const inputValue = event.target.value;
   const todoItems = getState().todoItems;
 
-  console.log("checkedValues from event", {
-    inputValue,
-    event,
-    type,
-    todoItems,
-  });
   setState({ inputValue });
 
   if (todoItems && type === TYPE.enter) {
