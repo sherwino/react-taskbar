@@ -4,11 +4,15 @@ A desktop type environment built in react.
 
 ## Objective
 
-The React Taskbar is a launcher that pulls in a series of apps and tools from other repos and lets you run them. Some of the tools or apps will be designed and implemented by @sherwino others are going to be desgned by the open-source community. 
+The React Taskbar is a launcher that pulls in a series of apps and tools from other repos and lets you run them. Some of the tools or apps will be designed and implemented by @sherwino others are going to be designed by the open-source community. 
+
+Here is the inspiration 😬
+
+![Windows Taskbar](https://i.gyazo.com/4804e1584ad942efbe7dad29f89142e9.png)
 
 ### Currently
 
-The initial implementation shows how you could create resizable and dragable windows. The app was created using create react app and more on those scripts can be seen [here](./docs/cra.md)
+The initial implementation shows how you could create resizable and draggable windows. The app was created using create react app and more on those scripts can be seen [here](./docs/cra.md)
 
 // Insert screen cap here
 
@@ -16,4 +20,4 @@ In future iterations the launcher will be able to add repos using a faux app sto
 
 ### Pending
 
-There is plenty to be done here but most of the work is going to be refactoring the existing implementaton so that it could decorate the other apps. All the apps should be decorated and inherit all of the window / launcher capabilities.
+There is plenty to be done here but most of the work is going to be refactoring the existing implimentation so that it could decorate the other apps. All the apps should be decorated and inherit all of the window / launcher capabilities.

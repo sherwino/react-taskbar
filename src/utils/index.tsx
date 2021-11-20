@@ -7,29 +7,24 @@
  * - trying to access localStorage object when cookies are disabled in Safari throws
  *   "SecurityError: The operation is insecure."
  */
-const data = {};
-export default {
-  get(key, defaultValue) {
+export const storage: StorageUtil = {
+  get(key) {
     try {
       return parseJSON(localStorage.getItem(key));
     } catch {
-      return defaultValue;
+      return false;
     }
   },
   set(key, value) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
 
-      data[key] = undefined;
-
       return true;
     } catch {
-      data[key] = value;
       return false;
     }
   },
   remove(key) {
-    data[key] = undefined;
     localStorage.removeItem(key);
   },
 };
@@ -38,7 +33,7 @@ export default {
  * A wrapper for `JSON.parse()` which supports the return value of `JSON.stringify(undefined)`
  * which returns the string `"undefined"` and this method returns the value `undefined`.
  */
-function parseJSON(value) {
+function parseJSON(value: any): any {
   return value === "undefined"
     ? undefined
     : // JSON.parse() doesn't accept non-string values, this is why we pass empty

@@ -1,4 +1,4 @@
-import * as styled from "styled-components";
+import styled from "styled-components";
 
 
 const MainContainer = styled.div`
@@ -21,7 +21,7 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
   `;
 
   const Clock = styled.div`

@@ -1,3 +1,6 @@
+export {}
+
+declare const window: MyWindow;
 
 window.Smallchat = {
   config: {

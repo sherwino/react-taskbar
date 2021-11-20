@@ -25,9 +25,9 @@ const styles = {
   },
 };
 
-class VSCode extends React.Component {
-  constructor() {
-    super();
+class VSCode extends React.Component<any, any>{
+  constructor(props: any) {
+    super(props);
     this.state = {
       closed: null,
       width: "830",

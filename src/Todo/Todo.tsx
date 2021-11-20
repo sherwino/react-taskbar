@@ -1,8 +1,9 @@
 import React from "react";
 import { Rnd } from "react-rnd";
-import storage from "../utils";
+import { storage } from "../utils";
 import { Checkbox, Input } from "antd";
 import "antd/dist/antd.css";
+import { CheckboxValueType } from "antd/lib/checkbox/Group";
 
 const styles = {
   topBar: {
@@ -40,51 +41,52 @@ const STORAGE_KEYS = {
   todoItems: "todoItems",
 };
 
-const TYPE = {
-  enter: "enter",
-  change: "change",
-};
+let getState: GetState;
+let setState: SetState;
 
-let getState;
-let setState;
-
-function handleCheckBoxChange(checkedValues) {
+function handleCheckBoxChange(checkedValues: CheckboxValueType[]) {
   // updateStorage
   console.log("checkedValues from event", checkedValues);
   storage.set(STORAGE_KEYS.checkedItems, checkedValues);
 }
 
-function handleInputChange(event, type = null, enterValue) {
-  // updateStorage
-  console.log("handle Input change", { event, type });
-  const inputValue = event.target.value;
-  const todoItems = getState().todoItems;
+function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  console.log("handle Input change", { e });
+  const inputValue = e.target.value;
 
   setState({ inputValue });
+}
 
-  if (todoItems && type === TYPE.enter) {
-    const newTodoList = [...todoItems, enterValue];
+function handleKeyboardInput(e: React.KeyboardEvent<HTMLInputElement>) {
+  const { todoItems, inputValue } = getState();
+
+  if (todoItems && inputValue) {
+    const newTodoList = [...todoItems, inputValue];
     storage.set(STORAGE_KEYS.todoItems, newTodoList);
     setState({ inputValue: "", todoItems: newTodoList });
     console.log("set", inputValue, "in storage", { todoItems, newTodoList });
   }
 }
 
-function handleInputFocus(e) {
+function handleInputFocus(e: React.FormEvent<HTMLInputElement>) {
   console.log("onFocus of inpput", e);
   setState({ focusedInput: true });
 }
 
-function handleInputBlur(e) {
+function handleInputBlur(e: React.FormEvent<HTMLInputElement>) {
   console.log("onBlur of inpput", e);
   setState({ focusedInput: false });
 }
 
-function handleOnClick(event) {
-  event.stopPropagation();
+function handleOnClick(e: React.MouseEvent<HTMLInputElement>) {
+  // TODO: do I needs this?
+  e.stopPropagation();
 }
 
-function renderInput(inputRef, state) {
+function renderInput(
+  inputRef: React.RefObject<Input> | React.LegacyRef<Input>,
+  state: TodoState
+) {
   const { inputValue } = state;
   console.log("render input", { inputValue, inputRef });
   return (
@@ -95,10 +97,10 @@ function renderInput(inputRef, state) {
       value={inputValue}
       ref={inputRef}
       onClick={handleOnClick}
-      onChange={(e) => handleInputChange(e, TYPE.change)}
+      onChange={handleInputChange}
       onFocus={handleInputFocus}
       onBlur={handleInputBlur}
-      onPressEnter={(e) => handleInputChange(e, TYPE.enter, inputValue)}
+      onPressEnter={handleKeyboardInput}
     />
   );
 }
@@ -109,7 +111,7 @@ function renderInput(inputRef, state) {
  * @param {Object} todoItems - array of todo item objects
  * @returns {*} - Checkbox Component
  */
-function renderCheckBoxes(state) {
+function renderCheckBoxes(state: TodoState) {
   const { checkedItems, todoItems } = state;
   // Populate defauled checked with storage, also save / update storage when things change.
   console.log("things from...storage", { checkedItems, todoItems });
@@ -131,20 +133,21 @@ function renderCheckBoxes(state) {
   );
 }
 
-class Todo extends React.Component {
-  constructor() {
-    super();
+class Todo extends React.Component<TodoProps, TodoState> {
+  inputRef: React.RefObject<Input> | React.LegacyRef<Input>;
+  constructor(props: TodoProps) {
+    super(props);
     this.inputRef = React.createRef();
     this.state = {
-      closed: null,
-      width: "830",
-      height: "690",
-      x: "100",
-      y: "40",
+      closed: false,
+      width: 830,
+      height: 690,
+      x: 100,
+      y: 40,
       checkedItems: [],
       todoItems: [],
-      inputValue: null,
-      focusedInput: null,
+      inputValue: "",
+      focusedInput: false,
     };
   }
 
@@ -163,7 +166,7 @@ class Todo extends React.Component {
     return this.state;
   };
 
-  set = (object) => {
+  set = (object: {}) => {
     return this.setState((prevState) => Object.assign(prevState, object));
   };
 
@@ -184,8 +187,8 @@ class Todo extends React.Component {
           }}
           onResize={(e, direction, ref, delta, position) => {
             this.setState({
-              width: ref.style.width,
-              height: ref.style.height,
+              width: Number(ref.style.width),
+              height: Number(ref.style.height),
               ...position,
             });
           }}

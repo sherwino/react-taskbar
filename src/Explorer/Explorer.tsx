@@ -33,9 +33,9 @@ const styles = {
   },
 };
 
-class Window extends React.Component<WindowProps, WindowState> {
-  constructor() {
-    super();
+class Window extends React.Component<ExplorerProps, ExplorerState> {
+  constructor(props: ExplorerProps) {
+    super(props);
     this.state = {
       closed: false,
       width: 730,
@@ -64,8 +64,8 @@ class Window extends React.Component<WindowProps, WindowState> {
           }}
           onResize={(e, direction, ref, delta, position) => {
             this.setState({
-              width: ref.style.width,
-              height: ref.style.height,
+              width: Number(ref.style.width),
+              height: Number(ref.style.height),
               ...position,
             });
           }}
