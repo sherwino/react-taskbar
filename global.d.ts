@@ -50,3 +50,7 @@ declare type StorageUtil = {
   set: (key: string, value: any) => boolean;
   remove: (key: string) => void;
 }
+
+declare type IconContainerProps = {
+  spin?: boolean;
+}

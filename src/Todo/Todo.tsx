@@ -29,13 +29,6 @@ const styles = {
   },
 };
 
-// TODO: Make this functional
-// TODO: Convert to TS
-// TODO: Find out why you have to click twice to keep focused
-// TODO: If storage not available useRef
-// TODO: Delete item action
-// TODO: Make it pretty
-
 const STORAGE_KEYS = {
   checkedItems: "checkedItems",
   todoItems: "todoItems",
@@ -46,12 +39,10 @@ let setState: SetState;
 
 function handleCheckBoxChange(checkedValues: CheckboxValueType[]) {
   // updateStorage
-  console.log("checkedValues from event", checkedValues);
   storage.set(STORAGE_KEYS.checkedItems, checkedValues);
 }
 
 function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-  console.log("handle Input change", { e });
   const inputValue = e.target.value;
 
   setState({ inputValue });
@@ -64,22 +55,18 @@ function handleKeyboardInput(e: React.KeyboardEvent<HTMLInputElement>) {
     const newTodoList = [...todoItems, inputValue];
     storage.set(STORAGE_KEYS.todoItems, newTodoList);
     setState({ inputValue: "", todoItems: newTodoList });
-    console.log("set", inputValue, "in storage", { todoItems, newTodoList });
   }
 }
 
 function handleInputFocus(e: React.FormEvent<HTMLInputElement>) {
-  console.log("onFocus of inpput", e);
   setState({ focusedInput: true });
 }
 
 function handleInputBlur(e: React.FormEvent<HTMLInputElement>) {
-  console.log("onBlur of inpput", e);
   setState({ focusedInput: false });
 }
 
 function handleOnClick(e: React.MouseEvent<HTMLInputElement>) {
-  // TODO: do I needs this?
   e.stopPropagation();
 }
 
@@ -88,11 +75,10 @@ function renderInput(
   state: TodoState
 ) {
   const { inputValue } = state;
-  console.log("render input", { inputValue, inputRef });
   return (
     <Input
       key="todo-input-field"
-      style={{ width: "100%", margin: 20 }}
+      style={{ width: "100%", padding: 8 }}
       placeholder={"Enter To Do List Items Here"}
       value={inputValue}
       ref={inputRef}
@@ -114,16 +100,17 @@ function renderInput(
 function renderCheckBoxes(state: TodoState) {
   const { checkedItems, todoItems } = state;
   // Populate defauled checked with storage, also save / update storage when things change.
-  console.log("things from...storage", { checkedItems, todoItems });
+  console.log("RenderCheckBoxes", { checkedItems, todoItems });
   return (
     checkedItems && (
       <Checkbox.Group
         style={{
           width: "100%",
-          height: 800,
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           backgroundColor: "rgba(255,255,255, 0.6)",
+          overflowY: "scroll",
         }}
         options={todoItems} // List of items
         defaultValue={checkedItems} // List of previously checked items
@@ -140,8 +127,8 @@ class Todo extends React.Component<TodoProps, TodoState> {
     this.inputRef = React.createRef();
     this.state = {
       closed: false,
-      width: 830,
-      height: 690,
+      width: 650,
+      height: 450,
       x: 100,
       y: 40,
       checkedItems: [],
@@ -172,6 +159,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
 
   render() {
     const { focusedInput, closed, width, height, x, y } = this.state;
+    // const CheckBoxes = React.useCallback(() => renderCheckBoxes(this.state), [this.state.checkedItems, this.state.todoItems]);
     const position = { x, y };
 
     return (
@@ -202,6 +190,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
           </div>
           {renderInput(this.inputRef, this.state)}
           {renderCheckBoxes(this.state)}
+          {/* <CheckBoxes/> */}
         </Rnd>
       )
     );

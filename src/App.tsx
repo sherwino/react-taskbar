@@ -7,8 +7,6 @@ import "./messenger.css";
 import "./T8EASER7VGFWA1B124";
 import Todo from "./Todo/Todo";
 
-// TODO: a little manifest to manage the state of all of the installed apps
-// Pull last known config from storage
 const APP_CONFIG = {
   code: false,
   todo: true,

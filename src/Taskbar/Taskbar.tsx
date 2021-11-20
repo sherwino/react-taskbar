@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MainContainer, Clock, Time } from "./Taskbar.styles";
 
-import {
-  VSCode,
-  ReactStart,
-  Task,
-  Explorer,
-  Firefox,
-  Chrome,
-  Outlook,
-} from "./Icons";
+import { ICONS, Icon } from "./Icons";
 
-// TODO - probably don't need this anymore, use styled
 import "./Taskbar.css";
 
 const App = () => {
@@ -24,22 +15,21 @@ const App = () => {
     setInterval(() => currentTime(), 1000);
   }, []);
 
-  // TODO: now the svgs don't accept className
   return (
     <MainContainer>
-      <ReactStart />
       <div id="taskbar-apps">
+      <Icon name={ICONS.start} spin />
         {/*
          * TODO: find out how to add alt, docs said they had title
          * Linter says otherwise
          * https://create-react-app.dev/docs/adding-images-fonts-and-files/#adding-svgs
          */}
-        <Task />
-        <Explorer />
-        <Firefox />
-        <Chrome />
-        <VSCode />
-        <Outlook />
+        <Icon name={ICONS.task} />
+        <Icon name={ICONS.explorer} />
+        <Icon name={ICONS.firefox} />
+        <Icon name={ICONS.chrome} />
+        <Icon name={ICONS.vscode} />
+        <Icon name={ICONS.outlook} />
       </div>
       <Clock>
         <Time>{time.toLocaleTimeString()}</Time>

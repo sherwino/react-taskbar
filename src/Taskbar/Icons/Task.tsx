@@ -1,12 +1,11 @@
 import React from "react";
 
-// TODO: Maybe this will be the icon for todo list
 function Task() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="228"
-      height="168"
+      width="100%"
+      height="100%"
       version="1"
       viewBox="0 0 171 126"
     >
