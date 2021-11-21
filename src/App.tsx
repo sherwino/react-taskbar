@@ -6,6 +6,8 @@ import VSCode from "./VSCode/VSCode";
 import "./messenger.css";
 import "./T8EASER7VGFWA1B124";
 import Todo from "./Todo/Todo";
+import { WindowContext } from "./Contexts/WindowContext";
+import { DEFAULT_APP_CONFIG } from "./utils/const";
 
 const APP_CONFIG = {
   code: false,
@@ -23,7 +25,9 @@ class App extends Component {
         {APP_CONFIG.windowsExplorer && <Explorer />}
         {APP_CONFIG.code && <VSCode />}
         {APP_CONFIG.todo && <Todo />}
-        <Taskbar />
+        <WindowContext.Provider value={DEFAULT_APP_CONFIG}>
+          <Taskbar />
+        </WindowContext.Provider>
       </div>
     );
   }
