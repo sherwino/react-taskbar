@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const MainContainer = styled.div`
   width: 100%;
   height: 52px;
@@ -21,34 +20,41 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
-  `;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+`;
 
-  const Clock = styled.div`
-    width: 6rem;
-    color: #fff;
-    margin: 0 1rem 0 0;
-   `;
+const Clock = styled.div`
+  width: 8rem;
+  height: 52px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+`;
 
-  const Time = styled.p`
-    font-size: 15px;
-    color: white;
+const Time = styled.p`
+  padding: 1rem 0;
+  font-size: 15px;
+  height: 100%;
+  line-height: 100%;
+  color: white;
+  text-align: center;
+`;
 
-  `;
+const Button = styled.button`
+  margin-top: 10px;
+  width: 100px;
+  height: 40px;
+  border-radius: 18.5px;
+  background-color: darkgray;
+`;
 
-  const Button = styled.button`
-    margin-top: 10px;
-    width: 100px;
-    height: 40px;
-    border-radius: 18.5px;
-    background-color: darkgray;
-  `;
+const AppContainer = styled.div`
+  flex: auto;
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  border: 2px red dashed;
+`;
 
-
-  export {
-      Clock, 
-      MainContainer,
-      NavBar,
-      Time, 
-      Button
-  }
+export { Clock, MainContainer, NavBar, Time, Button, AppContainer };
