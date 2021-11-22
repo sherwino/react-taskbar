@@ -7,24 +7,7 @@ import ReactStart from "./ReactStart";
 import Task from "./Task";
 import VSCode from "./VSCode";
 import { IconContainer } from "./Icons.styles";
-
-export const ICONS = {
-  chrome: "chrome",
-  explorer: "explorer",
-  firefox: "firefox",
-  outlook: "outlook",
-  start: "start",
-  task: "task",
-  vscode: "vscode",
-};
-// } as const; does not work, hmm, what TS does react-scripts have 🤔
-
-type Values<T> = T[keyof T];
-type IconsType = Values<typeof ICONS>;
-type IconWrapper = {
-  name: IconsType;
-  spin?: boolean;
-};
+import { ICONS } from "../../utils/const";
 
 const getIconComponent = (
   name: IconsType
@@ -57,8 +40,8 @@ const getIconComponent = (
 };
 
 const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, name: string) => {
-    alert(`Clicked on ${name}`)
-}
+  alert(`Clicked on ${name}`);
+};
 
 /**
  * Returns the selected icon wrapped in a container
@@ -68,11 +51,16 @@ const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, name: string) => {
  * @param props
  * @returns Icon
  */
-export const Icon = (props: IconWrapper): JSX.Element => {
+const Icon = (props: IconWrapper): JSX.Element => {
   const IconComponent = getIconComponent(props.name);
   return (
-    <IconContainer spin={props.spin} onClick={(e) => handleOnClick(e, props.name)}>
+    <IconContainer
+      spin={props.spin}
+      onClick={(e) => handleOnClick(e, props.name)}
+    >
       <IconComponent />
     </IconContainer>
   );
 };
+
+export { Icon, ICONS };

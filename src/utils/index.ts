@@ -40,3 +40,15 @@ function parseJSON(value: any): any {
       // string which will throw an error which can be handled
       JSON.parse(value);
 }
+
+/**
+ * Merge current into lastKnown into, default window config
+ * Essentially current config takes highest priority, default lowest
+ */
+export const mergeConfigFn: MergeUtil = (defaultCfg, lastKnownCfg, currentCfg) => () => {
+const mergeLastKnown = Object.assign(defaultCfg, lastKnownCfg);
+const mergedConfig = Object.assign(mergeLastKnown, currentCfg);
+
+  return mergedConfig;
+
+}

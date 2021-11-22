@@ -4,6 +4,7 @@ import { storage } from "../utils";
 import { Checkbox, Input } from "antd";
 import "antd/dist/antd.css";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { Window } from "../Window/Window"
 
 const styles = {
   topBar: {
@@ -164,23 +165,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
 
     return (
       !closed && (
-        <Rnd
-          id="window"
-          bounds="window"
-          size={{ width, height }}
-          position={position}
-          disableDragging={focusedInput}
-          onDragStop={(e, d) => {
-            this.setState({ x: d.x, y: d.y });
-          }}
-          onResize={(e, direction, ref, delta, position) => {
-            this.setState({
-              width: Number(ref.style.width),
-              height: Number(ref.style.height),
-              ...position,
-            });
-          }}
-        >
+        <Window>
           <div style={styles.topBar} onClick={(e) => e.preventDefault()}>
             <div
               className="invisible-close-btn"
@@ -191,7 +176,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
           {renderInput(this.inputRef, this.state)}
           {renderCheckBoxes(this.state)}
           {/* <CheckBoxes/> */}
-        </Rnd>
+        </Window>
       )
     );
   }

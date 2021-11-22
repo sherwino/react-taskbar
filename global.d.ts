@@ -10,8 +10,8 @@ declare type ExplorerState = {
 
 declare type ExplorerProps = {};
 
-  declare interface MyWindow extends Window {
-    Smallchat: any;
+declare interface MyWindow extends Window {
+  Smallchat: any;
 }
 
 declare type TodoState = {
@@ -24,10 +24,9 @@ declare type TodoState = {
   todoItems: any[];
   inputValue?: string;
   focusedInput?: boolean;
-}
+};
 
-declare type TodoProps = {}
-
+declare type TodoProps = {};
 
 declare type SetTodoState = {
   closed?: boolean;
@@ -39,9 +38,9 @@ declare type SetTodoState = {
   todoItems?: any[];
   inputValue?: string;
   focusedInput?: boolean;
-}
+};
 
-declare type GetState = () => TodoState
+declare type GetState = () => TodoState;
 declare type SetState = (obj: SetTodoState) => void;
 
 declare type StorageUtil = {
@@ -49,8 +48,71 @@ declare type StorageUtil = {
   get: (key: string) => any;
   set: (key: string, value: any) => boolean;
   remove: (key: string) => void;
-}
+};
 
 declare type IconContainerProps = {
   spin?: boolean;
-}
+};
+
+declare type WindowProps = {
+  children: React.ReactNode;
+};
+
+type Values<T> = T[keyof T];
+
+declare type IconsType = Values<typeof import("./src/utils/const").ICONS>;
+declare type AppType = Values<typeof import("./src/utils/const").APPS>;
+declare type ConfigType = Values<typeof import("./src/utils/const").CONFIGS>;
+
+declare type IconWrapper = {
+  name: IconsType;
+  spin?: boolean;
+};
+
+declare type WindowConfig = {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  open: boolean;
+  minimized: boolean;
+};
+
+declare type MergeUtil = (
+  defaultCfg: WindowConfig,
+  lastKnownCfg: WindowConfig,
+  currentCfg: WindowConfig
+) => () => WindowConfig;
+
+// apps: [] list of apps and their configs
+// openApp: (appName) => void;
+// minimizeApp: (appName) => void;
+// closeApp: (appName) => void;
+// setDefaultCfg: (appName, config) => void;
+
+declare type WindowCtx = {
+  addApp: SetApps;
+  openApp: SetAction;
+  minimizeApp: SetAction;
+  closeApp: SetAction;
+  setLastKnown: SetConfig;
+  setDefault: SetConfig;
+  setCurrent: SetConfig;
+  apps: App[];
+};
+
+declare type App = {
+  name: IconsType;
+  defaultCfg: WindowConfig;
+  lastKnownCfg?: WindowConfig;
+  currentCfg?: WindowConfig;
+  config?: WindowConfig;
+};
+
+declare type SetApps = (appName: AppType, config: WindowConfig) => void;
+declare type SetAction = (appName: AppType) => void;
+declare type SetConfig = (
+  appName: AppType,
+  config: WindowConfig,
+  type?: ConfigType
+) => void;
