@@ -1,5 +1,8 @@
 import React from "react";
 import { Rnd } from "react-rnd";
+import App from "../App";
+import { APPS } from "../utils/const";
+import { Window } from "../Window/Window";
 
 const styles = {
   topBar: {
@@ -21,11 +24,11 @@ const styles = {
   closeBtn: {
     height: 25,
     width: 30,
-    cursor: "default"
+    cursor: "default",
   },
 };
 
-class VSCode extends React.Component<any, any>{
+class VSCode extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -44,44 +47,19 @@ class VSCode extends React.Component<any, any>{
     const closed = this.state.closed;
 
     return (
-      !closed && (
-        <Rnd
-          id="window"
-          bounds="window"
-          size={{ width, height }}
-          position={position}
-   
-          onDragStop={(e, d) => {
-            this.setState({ x: d.x, y: d.y });
-          }}
-          onResize={(e, direction, ref, delta, position) => {
-            this.setState({
-              width: ref.style.width,
-              height: ref.style.height,
-              ...position,
-            });
-          }}
-        >
-          <div style={styles.topBar} onClick={(e) => e.preventDefault()}>
-            <div
-              className="invisible-close-btn"
-              style={styles.closeBtn}
-              onClick={() => this.setState({ closed: true })}
-            />
-          </div>
-          <iframe
-            src="https://codesandbox.io/s/infallible-bell-cgxgz"
-            title="code"
-            width={width}
-            height={height}
-            // position={position}
-            id="vscode-iframe"
-            className="iframe"
-            // display="initial"
-            allowFullScreen
-          />
-        </Rnd>
-     )
+      <Window name={APPS.vscode}>
+        <iframe
+          src="https://codesandbox.io/s/infallible-bell-cgxgz"
+          title="code"
+          width={width}
+          height={height}
+          // position={position}
+          id="vscode-iframe"
+          className="iframe"
+          // display="initial"
+          allowFullScreen
+        />
+      </Window>
     );
   }
 }

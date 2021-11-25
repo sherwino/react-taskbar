@@ -1,23 +1,23 @@
-export enum ICONS {
-  chrome = "chrome",
-  explorer = "explorer",
-  firefox = "firefox",
-  outlook = "outlook",
-  start = "start",
-  task = "task",
-  vscode = "vscode",
+export const ICONS: Record<string, string> = {
+  chrome: "chrome",
+  explorer: "explorer",
+  firefox: "firefox",
+  outlook: "outlook",
+  start: "start",
+  task: "task",
+  vscode: "vscode",
 };
 // For some reason cant use "as const" which lets this work like an enum
 
 export const APPS = ICONS;
 
-export enum CONFIGS {
-    default = "default",
-    lastKnown = "lastKnown",
-    current = "current"
+export const CONFIGS: Record<string, keyof App>  = {
+    default: "defaultCfg",
+    lastKnown: "lastKnownCfg",
+    current: "currentCfg"
 }
 
-export const DEFAULT_APP_CONFIG = {
+export const DEFAULT_APP_CONFIG: Record<string, boolean>  = {
   code: false,
   todo: true,
   windowsExplorer: false,

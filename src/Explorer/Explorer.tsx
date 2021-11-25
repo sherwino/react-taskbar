@@ -1,6 +1,8 @@
 import React from "react";
 import { Rnd } from "react-rnd";
+import { APPS } from "../utils/const";
 import Background from "./explorer.png";
+import { Window } from "../Window/Window";
 
 const styles = {
   topBar: {
@@ -33,7 +35,7 @@ const styles = {
   },
 };
 
-class Window extends React.Component<ExplorerProps, ExplorerState> {
+class Exporer extends React.Component<ExplorerProps, ExplorerState> {
   constructor(props: ExplorerProps) {
     super(props);
     this.state = {
@@ -52,35 +54,11 @@ class Window extends React.Component<ExplorerProps, ExplorerState> {
     const closed = this.state.closed;
 
     return (
-      !closed && (
-        <Rnd
-          id="explorer"
-          bounds="window"
-          size={{ width, height }}
-          position={position}
-          style={styles.window}
-          onDragStop={(e, d) => {
-            this.setState({ x: d.x, y: d.y });
-          }}
-          onResize={(e, direction, ref, delta, position) => {
-            this.setState({
-              width: Number(ref.style.width),
-              height: Number(ref.style.height),
-              ...position,
-            });
-          }}
-        >
-          <div style={styles.topBar}>
-            <div
-              className="invisible-close-btn"
-              style={styles.closeBtn}
-              onClick={() => this.setState({ closed: true })}
-            />
-          </div>
-        </Rnd>
-      )
+      <Window name={APPS.explorer}>
+        <div style={styles.window} />
+      </Window>
     );
   }
 }
 
-export default Window;
+export default Exporer;

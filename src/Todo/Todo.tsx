@@ -1,34 +1,11 @@
-import React from "react";
-import { Rnd } from "react-rnd";
-import { storage } from "../utils";
 import { Checkbox, Input } from "antd";
 import "antd/dist/antd.css";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
-import { Window } from "../Window/Window"
+import React from "react";
+import { storage } from "../utils";
+import { APPS } from "../utils/const";
+import { Window } from "../Window/Window";
 
-const styles = {
-  topBar: {
-    background: "url(https://i.gyazo.com/9c73502f78d3e1f810d79cab6ec2464a.png)",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    margin: 0,
-    borderLeft: "2px",
-    borderRight: "2px",
-    borderColor: "#ddd",
-    borderStyle: "solid",
-    width: "100%",
-    color: "#fff",
-    height: 25,
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-  },
-  closeBtn: {
-    height: 25,
-    width: 30,
-    cursor: "default",
-  },
-};
 
 const STORAGE_KEYS = {
   checkedItems: "checkedItems",
@@ -69,6 +46,7 @@ function handleInputBlur(e: React.FormEvent<HTMLInputElement>) {
 
 function handleOnClick(e: React.MouseEvent<HTMLInputElement>) {
   e.stopPropagation();
+  e.preventDefault();
 }
 
 function renderInput(
@@ -101,7 +79,6 @@ function renderInput(
 function renderCheckBoxes(state: TodoState) {
   const { checkedItems, todoItems } = state;
   // Populate defauled checked with storage, also save / update storage when things change.
-  console.log("RenderCheckBoxes", { checkedItems, todoItems });
   return (
     checkedItems && (
       <Checkbox.Group
@@ -139,7 +116,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       checkedItems: storage.get(STORAGE_KEYS.checkedItems) || [],
       todoItems: storage.get(STORAGE_KEYS.todoItems) || [],
@@ -162,22 +139,13 @@ class Todo extends React.Component<TodoProps, TodoState> {
     const { focusedInput, closed, width, height, x, y } = this.state;
     // const CheckBoxes = React.useCallback(() => renderCheckBoxes(this.state), [this.state.checkedItems, this.state.todoItems]);
     const position = { x, y };
-
+// todo add disable movement on focusedInput
     return (
-      !closed && (
-        <Window>
-          <div style={styles.topBar} onClick={(e) => e.preventDefault()}>
-            <div
-              className="invisible-close-btn"
-              style={styles.closeBtn}
-              onClick={() => this.setState({ closed: true })}
-            />
-          </div>
+        <Window name={APPS.task}>
           {renderInput(this.inputRef, this.state)}
           {renderCheckBoxes(this.state)}
           {/* <CheckBoxes/> */}
         </Window>
-      )
     );
   }
 }

@@ -8,6 +8,7 @@ import Task from "./Task";
 import VSCode from "./VSCode";
 import { IconContainer } from "./Icons.styles";
 import { ICONS } from "../../utils/const";
+import { WindowContext } from "../../Contexts/WindowContext";
 
 const getIconComponent = (
   name: IconsType
@@ -39,10 +40,6 @@ const getIconComponent = (
   }
 };
 
-const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, name: string) => {
-  alert(`Clicked on ${name}`);
-};
-
 /**
  * Returns the selected icon wrapped in a container
  * Icons will inherit a few properties from this component wrapper
@@ -53,6 +50,13 @@ const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, name: string) => {
  */
 const Icon = (props: IconWrapper): JSX.Element => {
   const IconComponent = getIconComponent(props.name);
+  const context = React.useContext<any>(WindowContext);
+
+  const handleOnClick = (e: React.MouseEvent<HTMLDivElement>, name: string) => {
+    console.log({ context });
+    context.openApp(props.name);
+  };
+
   return (
     <IconContainer
       spin={props.spin}

@@ -56,6 +56,7 @@ declare type IconContainerProps = {
 
 declare type WindowProps = {
   children: React.ReactNode;
+  name: AppType;
 };
 
 type Values<T> = T[keyof T];
@@ -79,10 +80,10 @@ declare type WindowConfig = {
 };
 
 declare type MergeUtil = (
-  defaultCfg: WindowConfig,
-  lastKnownCfg: WindowConfig,
-  currentCfg: WindowConfig
-) => () => WindowConfig;
+  defaultCfg?: WindowConfig | {},
+  lastKnownCfg?: WindowConfig | {},
+  currentCfg?: WindowConfig | {}
+) => WindowConfig | {};
 
 // apps: [] list of apps and their configs
 // openApp: (appName) => void;
@@ -106,13 +107,19 @@ declare type App = {
   defaultCfg: WindowConfig;
   lastKnownCfg?: WindowConfig;
   currentCfg?: WindowConfig;
-  config?: WindowConfig;
+  config?: WindowConfig | {};
 };
 
-declare type SetApps = (appName: AppType, config: WindowConfig) => void;
+declare type SetApps = (appName: AppType, config?: WindowConfig) => void;
 declare type SetAction = (appName: AppType) => void;
 declare type SetConfig = (
   appName: AppType,
   config: WindowConfig,
-  type?: ConfigType
+  type: ConfigType,
 ) => void;
+
+declare type SetConfigType = (
+  appName: AppType,
+  config: WindowConfig,
+) => void;
+
