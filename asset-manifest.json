@@ -1,16 +1,16 @@
 {
-  "main.css": "/react-taskbar/static/css/main.ba74bfe1.chunk.css",
-  "main.js": "/react-taskbar/static/js/main.a2ad274f.chunk.js",
-  "main.js.map": "/react-taskbar/static/js/main.a2ad274f.chunk.js.map",
+  "main.css": "/react-taskbar/static/css/main.f14a69af.chunk.css",
+  "main.js": "/react-taskbar/static/js/main.9e0bf2db.chunk.js",
+  "main.js.map": "/react-taskbar/static/js/main.9e0bf2db.chunk.js.map",
   "static/css/1.23114020.chunk.css": "/react-taskbar/static/css/1.23114020.chunk.css",
-  "static/js/1.614c2cac.chunk.js": "/react-taskbar/static/js/1.614c2cac.chunk.js",
-  "static/js/1.614c2cac.chunk.js.map": "/react-taskbar/static/js/1.614c2cac.chunk.js.map",
+  "static/js/1.a8f296d0.chunk.js": "/react-taskbar/static/js/1.a8f296d0.chunk.js",
+  "static/js/1.a8f296d0.chunk.js.map": "/react-taskbar/static/js/1.a8f296d0.chunk.js.map",
   "runtime~main.js": "/react-taskbar/static/js/runtime~main.8632bdc9.js",
   "runtime~main.js.map": "/react-taskbar/static/js/runtime~main.8632bdc9.js.map",
   "static/media/explorer.png": "/react-taskbar/static/media/explorer.45c49d7f.png",
+  "static/css/main.f14a69af.chunk.css.map": "/react-taskbar/static/css/main.f14a69af.chunk.css.map",
   "static/css/1.23114020.chunk.css.map": "/react-taskbar/static/css/1.23114020.chunk.css.map",
-  "static/css/main.ba74bfe1.chunk.css.map": "/react-taskbar/static/css/main.ba74bfe1.chunk.css.map",
   "index.html": "/react-taskbar/index.html",
-  "precache-manifest.211da4fd972f3897894cad8ed48f7fca.js": "/react-taskbar/precache-manifest.211da4fd972f3897894cad8ed48f7fca.js",
+  "precache-manifest.77d7b652e78a28f294d0e0c8dba2a47b.js": "/react-taskbar/precache-manifest.77d7b652e78a28f294d0e0c8dba2a47b.js",
   "service-worker.js": "/react-taskbar/service-worker.js"
 }
