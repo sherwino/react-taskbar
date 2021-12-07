@@ -50,6 +50,7 @@ const Button = styled.button`
 `;
 
 const AppContainer = styled.div`
+  overflow: hidden;
   flex: auto;
   display: flex;
   height: 100%;
