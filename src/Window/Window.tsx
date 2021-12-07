@@ -2,7 +2,6 @@ import * as React from "react";
 import { Rnd } from "react-rnd";
 import { WindowContext } from "../Contexts/WindowContext";
 
-
 const styles = {
   topBar: {
     background: "url(https://i.gyazo.com/9c73502f78d3e1f810d79cab6ec2464a.png)",
@@ -24,7 +23,7 @@ const styles = {
     height: 25,
     width: 30,
     cursor: "default",
-    backgroundColor: "green"
+    backgroundColor: "green",
   },
 };
 
@@ -62,11 +61,17 @@ export const Window = (props: WindowProps) => {
   };
 
   const config = React.useMemo(() => {
-    return apps.find((app) => props.name === app.name && app.config);
+    return apps.find(app => props.name === app.name && app.config);
   }, [props.name, apps]);
 
   const { width, height } = windowDimensions;
   const windowOpen = config && config.currentCfg && config.currentCfg.open;
+
+  React.useEffect(() => {
+    if (context.disabledWindow === props.name) {
+      setInputFocus(true);
+    }
+  }, [context.disabledWindow, props.name]);
 
   return windowOpen ? (
     <Rnd
@@ -78,7 +83,7 @@ export const Window = (props: WindowProps) => {
       onDragStop={onDragStop}
       onResize={onResize}
     >
-      <div style={styles.topBar} onClick={(e) => e.preventDefault()}>
+      <div style={styles.topBar} onClick={e => e.preventDefault()}>
         <div
           className="invisible-close-btn"
           style={styles.closeBtn}

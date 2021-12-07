@@ -5,7 +5,7 @@ import { storage } from "../utils";
 import { APPS } from "../utils/const";
 import { Window } from "../Window/Window";
 import { TodoInput, CheckBoxGroup, DeleteBtn } from "./Todo.styles";
-
+import { WindowContext } from "../Contexts/WindowContext";
 
 const STORAGE_KEYS = {
   checkedItems: "checkedItems",
@@ -26,33 +26,74 @@ function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
   setState({ inputValue });
 }
 
+function createTodoItemFromInput(inputValue: string): TodoItem {
+  return {
+    label: inputValue,
+    value: inputValue.replace(/^[a-z0-9]gi/, ""),
+    checked: false,
+  };
+}
+
 function handleKeyboardInput(e: React.KeyboardEvent<HTMLInputElement>) {
   const { todoItems, inputValue } = getState();
+  const enter = e.code === "13" || e.key.toLowerCase() === "enter";
 
-  if (todoItems && inputValue) {
-    const newTodoList = [...todoItems, inputValue];
+  if (todoItems && inputValue && enter) {
+    const newTodoItem = createTodoItemFromInput(inputValue);
+    const newTodoList = [...todoItems, newTodoItem];
     storage.set(STORAGE_KEYS.todoItems, newTodoList);
     setState({ inputValue: "", todoItems: newTodoList });
   }
 }
 
-function handleInputFocus(e: React.FormEvent<HTMLInputElement>) {
-  setState({ focusedInput: true });
-}
+const handleInputFocus =
+  (value: any) => (e: React.FormEvent<HTMLInputElement>) => {
+    // value is the context
+    value.disable(APPS.task);
+    setState({ focusedInput: true });
+  };
 
-function handleInputBlur(e: React.FormEvent<HTMLInputElement>) {
-  setState({ focusedInput: false });
-}
+const handleInputBlur =
+  (value: any) => (e: React.FormEvent<HTMLInputElement>) => {
+    // value is the context
+    value.disable("");
 
-function handleOnClick(e: React.MouseEvent<HTMLInputElement>) {
+    setState({ focusedInput: false });
+  };
+
+const handleOnClick = (value: any) => (e: React.MouseEvent<HTMLInputElement>) => {
+  value.disable(APPS.task);
   e.stopPropagation();
   e.preventDefault();
 }
 
-function renderInput(
-  inputRef: any,
-  state: TodoState
-) {
+function removeItem(value: string) {
+  const { todoItems } = getState();
+
+  const newTodoList = todoItems.filter(item => item.value !== value);
+  storage.set(STORAGE_KEYS.todoItems, newTodoList);
+
+  setState({ todoItems: newTodoList });
+}
+
+function updateChecked(value: string, checked: boolean) {
+  const { todoItems } = getState();
+
+  const newTodoList = todoItems.map(item => {
+    if (item.value === value) {
+      return { ...item, checked };
+    }
+
+    return item;
+  });
+
+  storage.set(STORAGE_KEYS.todoItems, newTodoList);
+
+  setState({ todoItems: newTodoList });
+}
+
+function renderInput(inputRef: any, state: TodoState, value: any) {
+  console.log("is this context???", value)
   const { inputValue } = state;
   return (
     <TodoInput
@@ -62,9 +103,9 @@ function renderInput(
       ref={inputRef}
       onClick={handleOnClick}
       onChange={handleInputChange}
-      onFocus={handleInputFocus}
-      onBlur={handleInputBlur}
-      onPressEnter={handleKeyboardInput}
+      onFocus={handleInputFocus(value)}
+      onBlur={handleInputBlur(value)}
+      onKeyPress={handleKeyboardInput}
     />
   );
 }
@@ -82,9 +123,11 @@ function renderCheckBoxes(state: TodoState) {
   return (
     checkedItems && (
       <CheckBoxGroup
-        options={todoItems} // List of items
-        defaultValue={checkedItems} // List of previously checked items
-        onChange={handleCheckBoxChange}
+        todoItems={todoItems} // List of items
+        checkedItems={checkedItems} // List of previously checked items
+        removeItem={removeItem}
+        updateChecked={updateChecked}
+        // onChange={handleCheckBoxChange}
       />
     )
   );
@@ -124,7 +167,7 @@ class Todo extends React.Component<TodoProps, TodoState> {
   };
 
   set = (object: {}) => {
-    return this.setState((prevState) => Object.assign(prevState, object));
+    return this.setState(prevState => Object.assign(prevState, object));
   };
 
   render() {
@@ -132,13 +175,17 @@ class Todo extends React.Component<TodoProps, TodoState> {
     // When we turn into a functional component
     // const CheckBoxes = React.useCallback(() => renderCheckBoxes(this.state), [this.state.checkedItems, this.state.todoItems]);
     const position = { x, y };
-// todo add disable movement on focusedInput
+    // todo add disable movement on focusedInput
     return (
-        <Window name={APPS.task}>
-          {renderInput(this.inputRef, this.state)}
-          {renderCheckBoxes(this.state)}
-          {/* <CheckBoxes/> */}
-        </Window>
+      <WindowContext.Consumer>
+        {value => (
+          <Window name={APPS.task}>
+            {renderInput(this.inputRef, this.state, value)}
+            {renderCheckBoxes(this.state)}
+            {/* <CheckBoxes/> */}
+          </Window>
+        )}
+      </WindowContext.Consumer>
     );
   }
 }

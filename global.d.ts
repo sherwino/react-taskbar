@@ -62,6 +62,10 @@ declare type IconContainerProps = {
   spin?: boolean;
 };
 
+declare type TodoContainerProps = {
+  isHoveredItem: boolean;
+}
+
 declare type WindowProps = {
   children: React.ReactNode;
   name: AppType;

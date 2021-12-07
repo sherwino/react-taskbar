@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { MainContainer, Clock, Time, AppContainer } from "./Taskbar.styles";
-
 import { Icon, ICONS } from "./Icons";
-import { WindowContext } from "../Contexts/WindowContext";
-import { APPS, CONFIGS, WINDOW_DEFAULTS } from "../utils/const";
-import { mergeConfigFn } from "../utils";
+import { AppContainer, Clock, MainContainer, Time } from "./Taskbar.styles";
+
 
 
 
 const Taskbar = (props: any) => {
   const [dataTime, setTime] = useState({ time: new Date() });
   const { time } = dataTime;
-  const context = React.useContext(WindowContext);
-  const currentTime = () => setTime({ time: new Date() });
+  // const context = React.useContext(WindowContext);
+  // const currentTime = () => setTime({ time: new Date() });
 
  
   useEffect(() => {
-    const int = setInterval(() => currentTime(), 1000);
+    // const int = setInterval(() => currentTime(), 1000);
 
-    return () => clearInterval(int);
+    // return () => clearInterval(int);
   }, []);
 
   return (

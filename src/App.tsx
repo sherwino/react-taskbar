@@ -20,6 +20,8 @@ const App = (props: any) => {
   // const context = React.useContext(WindowContext);
 
   const [apps, setApps] = React.useState<App[]>([]);
+  // This should probably be part of setConfig in future
+  const [disabledWindow, setDisabledWindow ] = React.useState<any>();
 
   // TODO: really need to optimize taskbar so that everything is not re-rendering
   // The clock is fudging things up
@@ -62,6 +64,8 @@ const App = (props: any) => {
     });
   };
   const minimizeApp: SetAction = (appName) => {};
+  const disable: SetAction = (appName) => setDisabledWindow(appName);
+
   const closeApp: SetAction = (appName) => {
     apps.forEach((app) => {
       if (app.name === appName) {
@@ -97,6 +101,8 @@ Object.keys(APPS).forEach(app => addApp(app))
         setLastKnown,
         setCurrent,
         setDefault,
+        disable,
+        disabledWindow,
       }}
     >
       <div>

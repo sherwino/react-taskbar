@@ -1,14 +1,25 @@
 {
-  "include": ["src", "global.d.ts"],
-  "exclude": ["node_modules", "lib", "**/__tests__", "manifests"],
+  "include": [
+    "src",
+    "global.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "**/__tests__",
+    "manifests"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
+    "jsx": "react-jsx",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -17,7 +28,10 @@
     "sourceMap": true,
     "strict": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "noFallthroughCasesInSwitch": true
   },
   "references": []
 }
