@@ -6,9 +6,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "^27.0.2",
-    "@types/react": "^17.0.35",
-    "@types/react-dom": "^17.0.11",
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.16.13",
     "gh-pages": "^2.2.0",
     "react": "^16.14.0",
@@ -38,7 +36,13 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.11.7",
-    "@types/styled-components": "^5.1.15"
+    "@types/react": "^17.0.35",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.15",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.5.1"
   }
 }

@@ -14,6 +14,14 @@ declare interface MyWindow extends Window {
   Smallchat: any;
 }
 
+declare type TodoItem = {
+  label: string;
+  value: string;
+  checked: boolean;
+  description?: string;
+  deleted?: number; // If we want to do soft deletes
+};
+
 declare type TodoState = {
   closed?: boolean;
   width: number;
@@ -21,7 +29,7 @@ declare type TodoState = {
   x: number;
   y: number;
   checkedItems: string[];
-  todoItems: any[];
+  todoItems: TodoItem[];
   inputValue?: string;
   focusedInput?: boolean;
 };
@@ -35,7 +43,7 @@ declare type SetTodoState = {
   x?: number;
   y?: number;
   checkedItems?: string[];
-  todoItems?: any[];
+  todoItems?: TodoItem[];
   inputValue?: string;
   focusedInput?: boolean;
 };
@@ -115,11 +123,7 @@ declare type SetAction = (appName: AppType) => void;
 declare type SetConfig = (
   appName: AppType,
   config: WindowConfig,
-  type: ConfigType,
+  type: ConfigType
 ) => void;
 
-declare type SetConfigType = (
-  appName: AppType,
-  config: WindowConfig,
-) => void;
-
+declare type SetConfigType = (appName: AppType, config: WindowConfig) => void;
