@@ -17,11 +17,11 @@ export const CheckboxGroup = (props: CheckboxProps): any => {
   const removeItem = props.removeItem;
   const updateChecked = props.updateChecked;
   const [hoveredItem, setHoveredItem] = React.useState<null | number>(null);
-  const onMouseHover = (itemHovered: number) => (e: any) => {
+  const onMouseHover = (itemHovered: number | null) => (e: any) => {
     console.log("onMouseHover", {
       itemHovered,
       e,
-      todoItem: todoItems[itemHovered],
+      todoItem: itemHovered && todoItems[itemHovered],
       todoItems,
     });
     setHoveredItem(itemHovered);
@@ -41,7 +41,7 @@ export const CheckboxGroup = (props: CheckboxProps): any => {
     <TodoContainer
       isHoveredItem={hoveredItem === idx}
       onMouseEnter={onMouseHover(idx)}
-      onMouseLeave={onMouseHover(idx)}
+      onMouseLeave={onMouseHover(null)}
     >
       <TodoCheckInput
         type="checkbox"

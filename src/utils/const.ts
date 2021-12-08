@@ -24,10 +24,16 @@ export const DEFAULT_APP_CONFIG: Record<string, boolean>  = {
 };
 
 export const WINDOW_DEFAULTS = {
-  width: 800,
-  height: 600,
+  width: 720,
+  height: 480,
   x: 100,
   y: 100,
-  open: true,
+  open: false,
   minimized: false,
+};
+
+export const STORAGE_KEYS = {
+  checkedItems: "checkedItems",
+  todoItems: "todoItems",
+  appConfigs: "appConfigs"
 };

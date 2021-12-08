@@ -55,7 +55,7 @@ const AppContainer = styled.div`
   display: flex;
   height: 100%;
   flex-direction: row;
-  border: 2px red dashed;
+  /* border: 2px red dashed; */
 `;
 
 export { Clock, MainContainer, NavBar, Time, Button, AppContainer };

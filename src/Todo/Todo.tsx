@@ -4,8 +4,9 @@ import React from "react";
 import { storage } from "../utils";
 import { APPS } from "../utils/const";
 import { Window } from "../Window/Window";
-import { TodoInput, CheckBoxGroup, DeleteBtn } from "./Todo.styles";
+import { TodoInput, CheckboxContainer, DeleteBtn } from "./Todo.styles";
 import { WindowContext } from "../Contexts/WindowContext";
+import { CheckboxGroup } from "./CheckboxGroup";
 
 const STORAGE_KEYS = {
   checkedItems: "checkedItems",
@@ -48,9 +49,12 @@ function handleKeyboardInput(e: React.KeyboardEvent<HTMLInputElement>) {
 
 const handleInputFocus =
   (value: any) => (e: React.FormEvent<HTMLInputElement>) => {
-    // value is the context
+    // value is the context, need to clean up some of the garbage like this
     value.disable(APPS.task);
     setState({ focusedInput: true });
+    e.currentTarget.focus();
+    e.currentTarget.select();
+
   };
 
 const handleInputBlur =
@@ -122,13 +126,16 @@ function renderCheckBoxes(state: TodoState) {
   // TODO: don't use ant design checkbox group because doesn't let you make fields editable or deletable
   return (
     checkedItems && (
-      <CheckBoxGroup
+      <CheckboxContainer>
+      <CheckboxGroup
         todoItems={todoItems} // List of items
         checkedItems={checkedItems} // List of previously checked items
         removeItem={removeItem}
         updateChecked={updateChecked}
         // onChange={handleCheckBoxChange}
       />
+      </CheckboxContainer>
+
     )
   );
 }
@@ -171,18 +178,14 @@ class Todo extends React.Component<TodoProps, TodoState> {
   };
 
   render() {
-    const { focusedInput, closed, width, height, x, y } = this.state;
     // When we turn into a functional component
     // const CheckBoxes = React.useCallback(() => renderCheckBoxes(this.state), [this.state.checkedItems, this.state.todoItems]);
-    const position = { x, y };
-    // todo add disable movement on focusedInput
     return (
       <WindowContext.Consumer>
-        {value => (
+        {context => (
           <Window name={APPS.task}>
-            {renderInput(this.inputRef, this.state, value)}
+            {renderInput(this.inputRef, this.state, context)}
             {renderCheckBoxes(this.state)}
-            {/* <CheckBoxes/> */}
           </Window>
         )}
       </WindowContext.Consumer>

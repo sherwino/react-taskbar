@@ -1,3 +1,3 @@
 import * as React from "react";
 
-export const WindowContext = React.createContext({});
+export const WindowContext = React.createContext<any>({});

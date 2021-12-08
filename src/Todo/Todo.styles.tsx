@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { CheckboxGroup } from "./CheckboxGroup";
 
-export const CheckBoxGroup = styled(CheckboxGroup)`
-  /* width: 100%; */
-  /* height: 100%; */
-  /* display: flex; */
-  /* flex-direction: column; */
+export const CheckboxContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
+  background: #fff;
 `;
 
 export const TodoInput = styled.input`

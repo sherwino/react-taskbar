@@ -25,11 +25,14 @@ const styles = {
   },
   window: {
     display: "flex",
+    height: "100%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
     border: "solid 1px #ddd",
     background: "#f0f0f0",
-    backgroundImage: `url(${Background})`,
+    backgroundImage:
+      'url("https://i.gyazo.com/45c49d7f4e7f09238f485d5a9bc82a19.png")',
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },
@@ -48,11 +51,6 @@ class Exporer extends React.Component<ExplorerProps, ExplorerState> {
   }
 
   render() {
-    const position = { x: this.state.x, y: this.state.y };
-    const width = this.state.width;
-    const height = this.state.height;
-    const closed = this.state.closed;
-
     return (
       <Window name={APPS.explorer}>
         <div style={styles.window} />

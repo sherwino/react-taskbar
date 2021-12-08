@@ -23,22 +23,23 @@ const styles = {
     height: 25,
     width: 30,
     cursor: "default",
-    backgroundColor: "green",
   },
 };
 
 // TODO: see what methods could be easily sent to utils
 // TODO: start setting defaults
 export const Window = (props: WindowProps) => {
-  const context = React.useContext<any>(WindowContext);
+  const context = React.useContext<WindowCtx>(WindowContext);
   const apps: App[] = context.apps;
-  const [windowDimensions, setWindowDimensions] = React.useState({
-    width: 230,
-    height: 230,
-  });
-  const [position, setPosition] = React.useState({ x: 100, y: 100 });
-  const [focusedInput, setInputFocus] = React.useState(false);
 
+  const contextValues = React.useMemo(() => {
+    const values = apps.find(app => props.name === app.name);
+    return values?.config || values?.defaultCfg;
+  }, [props.name, apps]);
+
+  const { width, height, x, y } = contextValues as WindowConfig;
+  const [focusedInput, setInputFocus] = React.useState(false);
+  const [foreground, setForeground] = React.useState("");
   console.log("context bb", { context, props });
 
   const onResize = (
@@ -48,40 +49,49 @@ export const Window = (props: WindowProps) => {
     delta: any,
     position: any
   ) => {
-    setWindowDimensions({
-      width: Number(ref.style.width),
-      height: Number(ref.style.height),
+    context.setCurrent(props.name, {
+      ...contextValues,
+      width: Number(ref.offsetWidth),
+      height: Number(ref.offsetHeight),
+      x: position.x,
+      y: position.y,
     });
-
-    setPosition(position);
   };
 
   const onDragStop = (e: any, d: any) => {
-    setPosition({ x: d.x, y: d.y });
+    context.setCurrent(props.name, {
+      ...contextValues,
+      x: d.x,
+      y: d.y,
+    });
+
+    setForeground(props.name);
   };
 
-  const config = React.useMemo(() => {
-    return apps.find(app => props.name === app.name && app.config);
-  }, [props.name, apps]);
-
-  const { width, height } = windowDimensions;
-  const windowOpen = config && config.currentCfg && config.currentCfg.open;
+  const windowOpen = contextValues && contextValues.open;
+  const size =
+    width && height ? { width, height } : { width: 600, height: 400 };
+  const position = x && y ? { x, y } : { x: 100, y: 100 };
 
   React.useEffect(() => {
     if (context.disabledWindow === props.name) {
       setInputFocus(true);
     }
+
   }, [context.disabledWindow, props.name]);
 
+  console.log("who is in the forground", { foreground, name: props.name });
   return windowOpen ? (
     <Rnd
       id={props.name}
       bounds="window"
-      size={{ width, height }}
+      size={size}
       position={position}
       disableDragging={focusedInput}
       onDragStop={onDragStop}
       onResize={onResize}
+      // this is a rudimentary way to do this but it kinda works first time
+      style={{ zIndex: foreground === props.name ? 200 : 10 }}
     >
       <div style={styles.topBar} onClick={e => e.preventDefault()}>
         <div

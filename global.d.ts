@@ -83,19 +83,19 @@ declare type IconWrapper = {
 };
 
 declare type WindowConfig = {
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-  open: boolean;
-  minimized: boolean;
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  open?: boolean;
+  minimized?: boolean;
 };
 
 declare type MergeUtil = (
-  defaultCfg?: WindowConfig | {},
-  lastKnownCfg?: WindowConfig | {},
-  currentCfg?: WindowConfig | {}
-) => WindowConfig | {};
+  defaultCfg?: WindowConfig,
+  lastKnownCfg?: WindowConfig,
+  currentCfg?: WindowConfig
+) => WindowConfig;
 
 // apps: [] list of apps and their configs
 // openApp: (appName) => void;
@@ -104,14 +104,16 @@ declare type MergeUtil = (
 // setDefaultCfg: (appName, config) => void;
 
 declare type WindowCtx = {
+  apps: App[];
   addApp: SetApps;
   openApp: SetAction;
   minimizeApp: SetAction;
   closeApp: SetAction;
-  setLastKnown: SetConfig;
-  setDefault: SetConfig;
-  setCurrent: SetConfig;
-  apps: App[];
+  setLastKnown: SetConfigType;
+  setCurrent: SetConfigType;
+  setDefault: SetConfigType;
+  disable: SetAction;
+  disabledWindow: string;
 };
 
 declare type App = {
@@ -119,7 +121,7 @@ declare type App = {
   defaultCfg: WindowConfig;
   lastKnownCfg?: WindowConfig;
   currentCfg?: WindowConfig;
-  config?: WindowConfig | {};
+  config?: WindowConfig;
 };
 
 declare type SetApps = (appName: AppType, config?: WindowConfig) => void;
