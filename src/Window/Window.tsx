@@ -78,6 +78,8 @@ export const Window = (props: WindowProps) => {
       setInputFocus(true);
     }
 
+    return () => setInputFocus(false);
+
   }, [context.disabledWindow, props.name]);
 
   console.log("who is in the forground", { foreground, name: props.name });
