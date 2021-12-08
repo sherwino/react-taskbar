@@ -1,24 +1,23 @@
 {
   "files": {
     "main.css": "/react-taskbar/static/css/main.7bd097d2.chunk.css",
-    "main.js": "/react-taskbar/static/js/main.d00b7d4b.chunk.js",
-    "main.js.map": "/react-taskbar/static/js/main.d00b7d4b.chunk.js.map",
+    "main.js": "/react-taskbar/static/js/main.ea196776.chunk.js",
+    "main.js.map": "/react-taskbar/static/js/main.ea196776.chunk.js.map",
     "runtime-main.js": "/react-taskbar/static/js/runtime-main.8d3f42e3.js",
     "runtime-main.js.map": "/react-taskbar/static/js/runtime-main.8d3f42e3.js.map",
     "static/css/2.4a7968ae.chunk.css": "/react-taskbar/static/css/2.4a7968ae.chunk.css",
-    "static/js/2.b10f861b.chunk.js": "/react-taskbar/static/js/2.b10f861b.chunk.js",
-    "static/js/2.b10f861b.chunk.js.map": "/react-taskbar/static/js/2.b10f861b.chunk.js.map",
+    "static/js/2.297b7e13.chunk.js": "/react-taskbar/static/js/2.297b7e13.chunk.js",
+    "static/js/2.297b7e13.chunk.js.map": "/react-taskbar/static/js/2.297b7e13.chunk.js.map",
     "index.html": "/react-taskbar/index.html",
     "static/css/2.4a7968ae.chunk.css.map": "/react-taskbar/static/css/2.4a7968ae.chunk.css.map",
     "static/css/main.7bd097d2.chunk.css.map": "/react-taskbar/static/css/main.7bd097d2.chunk.css.map",
-    "static/js/2.b10f861b.chunk.js.LICENSE.txt": "/react-taskbar/static/js/2.b10f861b.chunk.js.LICENSE.txt",
-    "static/media/explorer.f18bb6a9.png": "/react-taskbar/static/media/explorer.f18bb6a9.png"
+    "static/js/2.297b7e13.chunk.js.LICENSE.txt": "/react-taskbar/static/js/2.297b7e13.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8d3f42e3.js",
     "static/css/2.4a7968ae.chunk.css",
-    "static/js/2.b10f861b.chunk.js",
+    "static/js/2.297b7e13.chunk.js",
     "static/css/main.7bd097d2.chunk.css",
-    "static/js/main.d00b7d4b.chunk.js"
+    "static/js/main.ea196776.chunk.js"
   ]
 }
