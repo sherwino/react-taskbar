@@ -2,16 +2,11 @@ import "antd/dist/antd.css";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import React from "react";
 import { storage } from "../utils";
-import { APPS } from "../utils/const";
+import { APPS, STORAGE_KEYS } from "../utils/const";
 import { Window } from "../Window/Window";
 import { TodoInput, CheckboxContainer, DeleteBtn } from "./Todo.styles";
 import { WindowContext } from "../Contexts/WindowContext";
 import { CheckboxGroup } from "./CheckboxGroup";
-
-const STORAGE_KEYS = {
-  checkedItems: "checkedItems",
-  todoItems: "todoItems",
-};
 
 let getState: GetState;
 let setState: SetState;
