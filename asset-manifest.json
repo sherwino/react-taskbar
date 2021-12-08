@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-taskbar/static/css/main.7bd097d2.chunk.css",
-    "main.js": "/react-taskbar/static/js/main.ea196776.chunk.js",
-    "main.js.map": "/react-taskbar/static/js/main.ea196776.chunk.js.map",
+    "main.js": "/react-taskbar/static/js/main.5bc21424.chunk.js",
+    "main.js.map": "/react-taskbar/static/js/main.5bc21424.chunk.js.map",
     "runtime-main.js": "/react-taskbar/static/js/runtime-main.8d3f42e3.js",
     "runtime-main.js.map": "/react-taskbar/static/js/runtime-main.8d3f42e3.js.map",
     "static/css/2.4a7968ae.chunk.css": "/react-taskbar/static/css/2.4a7968ae.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.4a7968ae.chunk.css",
     "static/js/2.297b7e13.chunk.js",
     "static/css/main.7bd097d2.chunk.css",
-    "static/js/main.ea196776.chunk.js"
+    "static/js/main.5bc21424.chunk.js"
   ]
 }
