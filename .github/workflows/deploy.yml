@@ -58,5 +58,5 @@ jobs:
       # Runs deploy command
       - name: Run deploy command
         run: |
-          echo "Let"s build it!"
+          echo "Lets build it!"
           npm run build
