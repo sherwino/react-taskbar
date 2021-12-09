@@ -12,6 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Who do you want me to say hello to?'
+        required: false
+        default: 'Sherwino'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,6 +42,10 @@ jobs:
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
           cache-dependency-path: ./package-lock.json
 
+      # Test workflow_dispatch
+      - name: Test workflow dispatch
+        run: echo "Hello ${{ github.event.inputs.name }}, what brings you to this CI?!"
+      
       # Install node / npm dependencies
       - name: Install NPM Dependencies
         run: npm i
