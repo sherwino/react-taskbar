@@ -1,13 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build & Deploy
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -29,9 +27,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
       # Sets up node
       - name: Setup Node.js environment
-      - uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.0
         with:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.x
@@ -48,14 +47,20 @@ jobs:
       
       # Install node / npm dependencies
       - name: Install NPM Dependencies
-        run: npm i
+        run: npm ci
         
       # Run test suite
       - name: Run test suite
         run: npm run test
 
+      # Runs build command
+      - name: Run build command
+        run: |
+          echo "Lets build it!"
+          npm run build
+      
       # Runs deploy command
       - name: Run deploy command
         run: |
-          echo "Let"s build it!"
-          npm run build
+          echo "Lets ship it!"
+          npm run deploy

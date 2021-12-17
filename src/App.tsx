@@ -10,12 +10,6 @@ import { mergeConfigFn, storage } from "./utils";
 import { APPS, CONFIGS, STORAGE_KEYS, WINDOW_DEFAULTS } from "./utils/const";
 import VSCode from "./VSCode/VSCode";
 
-const APP_CONFIG = {
-  code: false,
-  todo: true,
-  windowsExplorer: false,
-};
-
 const loadLastKnownFromStorage = async (setLastKnown: any) => {
   const lastKnownApps: App[] = await storage.get(STORAGE_KEYS.appConfigs);
   if (lastKnownApps && lastKnownApps.length > 0) {
@@ -38,31 +32,37 @@ const App = (props: any) => {
   // TODO: really need to optimize taskbar so that everything is not re-rendering
   // The clock is fudging things up
 
-  const setConfig: SetConfig = (appName, config, type) => {
-    const updatedAppsList = apps.map(app => {
-      if (app.name === appName) {
-        // Update apps config
-        // @ts-ignore
-        app[type] = config;
-        app.config = mergeConfigFn(
-          app.defaultCfg,
-          app.lastKnownCfg,
-          app.currentCfg
-        );
+  const setConfig: SetConfig = React.useCallback(
+    (appName, config, type) => {
+      const updatedAppsList = apps.map(app => {
+        if (app.name === appName) {
+          // Update apps config
+          // @ts-ignore
+          app[type] = config;
+          app.config = mergeConfigFn(
+            app.defaultCfg,
+            app.lastKnownCfg,
+            app.currentCfg
+          );
+          return app;
+        }
+
         return app;
-      }
+      });
 
-      return app;
-    });
+      console.log("setconfig", appName, config, type);
+      storage.set(STORAGE_KEYS.appConfigs, updatedAppsList);
+      setApps(updatedAppsList);
+    },
+    [apps]
+  );
 
-    console.log("setconfig", appName, config, type);
-    storage.set(STORAGE_KEYS.appConfigs, updatedAppsList);
-    setApps(updatedAppsList);
-  };
-
-  const setLastKnown: SetConfigType = (appName, config) => {
-    setConfig(appName, config, CONFIGS.lastKnown);
-  };
+  const setLastKnown: SetConfigType = React.useCallback(
+    (appName, config) => {
+      setConfig(appName, config, CONFIGS.lastKnown);
+    },
+    [setConfig]
+  );
   const setCurrent: SetConfigType = (appName, config) => {
     setConfig(appName, config, CONFIGS.current);
   };
@@ -107,7 +107,7 @@ const App = (props: any) => {
 
   React.useLayoutEffect(() => {
     loadLastKnownFromStorage(setLastKnown);
-  }, []);
+  }, [setLastKnown]);
 
   return (
     <WindowContext.Provider

@@ -1,20 +1,14 @@
 import "antd/dist/antd.css";
-import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import React from "react";
+import { WindowContext } from "../Contexts/WindowContext";
 import { storage } from "../utils";
 import { APPS, STORAGE_KEYS } from "../utils/const";
 import { Window } from "../Window/Window";
-import { TodoInput, CheckboxContainer, DeleteBtn } from "./Todo.styles";
-import { WindowContext } from "../Contexts/WindowContext";
 import { CheckboxGroup } from "./CheckboxGroup";
+import { CheckboxContainer, TodoInput } from "./Todo.styles";
 
 let getState: GetState;
 let setState: SetState;
-
-function handleCheckBoxChange(checkedValues: CheckboxValueType[]) {
-  // updateStorage
-  storage.set(STORAGE_KEYS.checkedItems, checkedValues);
-}
 
 function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
   const inputValue = e.target.value;
@@ -49,7 +43,6 @@ const handleInputFocus =
     setState({ focusedInput: true });
     e.currentTarget.focus();
     e.currentTarget.select();
-
   };
 
 const handleInputBlur =
@@ -60,11 +53,12 @@ const handleInputBlur =
     setState({ focusedInput: false });
   };
 
-const handleOnClick = (value: any) => (e: React.MouseEvent<HTMLInputElement>) => {
-  value.disable(APPS.task);
-  e.stopPropagation();
-  e.preventDefault();
-}
+const handleOnClick =
+  (value: any) => (e: React.MouseEvent<HTMLInputElement>) => {
+    value.disable(APPS.task);
+    e.stopPropagation();
+    e.preventDefault();
+  };
 
 function removeItem(value: string) {
   const { todoItems } = getState();
@@ -92,7 +86,7 @@ function updateChecked(value: string, checked: boolean) {
 }
 
 function renderInput(inputRef: any, state: TodoState, value: any) {
-  console.log("is this context???", value)
+  console.log("is this context???", value);
   const { inputValue } = state;
   return (
     <TodoInput
@@ -122,15 +116,14 @@ function renderCheckBoxes(state: TodoState) {
   return (
     checkedItems && (
       <CheckboxContainer>
-      <CheckboxGroup
-        todoItems={todoItems} // List of items
-        checkedItems={checkedItems} // List of previously checked items
-        removeItem={removeItem}
-        updateChecked={updateChecked}
-        // onChange={handleCheckBoxChange}
-      />
+        <CheckboxGroup
+          todoItems={todoItems} // List of items
+          checkedItems={checkedItems} // List of previously checked items
+          removeItem={removeItem}
+          updateChecked={updateChecked}
+          // onChange={handleCheckBoxChange}
+        />
       </CheckboxContainer>
-
     )
   );
 }
