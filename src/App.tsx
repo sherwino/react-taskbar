@@ -10,12 +10,6 @@ import { mergeConfigFn, storage } from "./utils";
 import { APPS, CONFIGS, STORAGE_KEYS, WINDOW_DEFAULTS } from "./utils/const";
 import VSCode from "./VSCode/VSCode";
 
-const APP_CONFIG = {
-  code: false,
-  todo: true,
-  windowsExplorer: false,
-};
-
 const loadLastKnownFromStorage = async (setLastKnown: any) => {
   const lastKnownApps: App[] = await storage.get(STORAGE_KEYS.appConfigs);
   if (lastKnownApps && lastKnownApps.length > 0) {
@@ -55,7 +49,6 @@ const App = (props: any) => {
       return app;
     });
 
-    console.log("setconfig", appName, config, type);
     storage.set(STORAGE_KEYS.appConfigs, updatedAppsList);
     setApps(updatedAppsList);
   };
@@ -101,12 +94,14 @@ const App = (props: any) => {
   const addApp: SetApps = (appName, config = WINDOW_DEFAULTS) => {
     const newAppList = [...apps, { name: appName, defaultCfg: config }];
 
-    console.log("adding app", { appName, apps });
     setApps(newAppList);
   };
 
   React.useLayoutEffect(() => {
     loadLastKnownFromStorage(setLastKnown);
+    // Need to find out what is going on here, linter says I should add setLastKnown as a dep
+    // but setLastKnown is not returning anything, if I listen to linter it crashes the app
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

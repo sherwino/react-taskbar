@@ -6,20 +6,20 @@ name: Build & Deploy
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
       name:
-        description: 'Who do you want me to say hello to?'
+        description: "Who do you want me to say hello to?"
         required: false
-        default: 'Sherwino'
+        default: "Sherwino"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build-and-deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -27,7 +27,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       # Sets up node
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.0
@@ -44,11 +44,11 @@ jobs:
       # Test workflow_dispatch
       - name: Test workflow dispatch
         run: echo "Hello ${{ github.event.inputs.name }}, what brings you to this CI?!"
-      
+
       # Install node / npm dependencies
       - name: Install NPM Dependencies
         run: npm ci
-        
+
       # Run test suite
       - name: Run test suite
         run: npm run test
@@ -58,9 +58,11 @@ jobs:
         run: |
           echo "Lets build it!"
           npm run build
-      
-      # Runs deploy command
-      - name: Run deploy command
+
+      # Runs deploy command, we could use npx as well instead of installing the dep
+      - name: Deploy with gh-pages
         run: |
-          echo "Lets ship it!"
-          npm run deploy
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy:ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

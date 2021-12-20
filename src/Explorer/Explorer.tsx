@@ -1,7 +1,5 @@
 import React from "react";
-import { Rnd } from "react-rnd";
 import { APPS } from "../utils/const";
-import Background from "./explorer.png";
 import { Window } from "../Window/Window";
 
 const styles = {
